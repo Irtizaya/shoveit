@@ -15,11 +15,11 @@ int i, j, k, check=0;
 int pressed=0,sel=0,ins=0,anim=0;
 char crctr;
 int wallptr, pointptr, crateptr,pix=64;
-Level lvl[1] = { 1 }; //ADD LEVELS HERE
-Wall W[1][81]; //ARRAY SIZES SHOULD BE SAME AS NUMBER OF LEVELS
+Level lvl[5] = { 1,2,3,4,5 }; //ADD LEVELS HERE
+Wall W[5][81]; //ARRAY SIZES SHOULD BE SAME AS NUMBER OF LEVELS
 Player Play[1];
-Point P[1][81];
-Crate C[1][81];
+Point P[5][81];
+Crate C[5][81];
 
 int lvltotal = sizeof(lvl) / sizeof(lvl[0]);
 int currentlevel = 0;
