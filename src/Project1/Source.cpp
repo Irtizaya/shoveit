@@ -11,8 +11,8 @@
 
 using namespace std;
 
-int i, j, k, lvlsum, check=0;
-int pressed=0,sel=0,ins=0,anim=0;
+int i, j, k, lvlsum, check=0,sound=0;
+int pressed=0,sel=0,ins=0,anim=0,acount=6,back=0;
 char crctr;
 int wallptr, pointptr, crateptr,pix=64;
 Level lvl[5] = { 1,2,3,4,5 }; //ADD LEVELS HERE
@@ -32,13 +32,14 @@ void iDraw()
 	if (check == 0) //MENU
 	{
 		
-		iShowBMP(0, 0, "TITLE.bmp");
+		iShowBMP(0, 0, "TITLES.bmp");
 
-		if (pressed && sel==2) iShowBMP(0, 0, "TITLEINS.bmp");
-		else if (pressed && sel == 1) iShowBMP(0, 0, "TITLENG.bmp");
+		if (pressed && sel==2) iShowBMP(0, 0, "TITLEINS1.bmp");
+		else if (pressed && sel == 1) iShowBMP(0, 0, "TITLENG1.bmp");
+		else if (pressed && sel == 3) iShowBMP(0, 0, "TITLES2.bmp");
 		if (ins == 1)
 		{
-			iShowBMP(0, 0, "instruction.bmp"); //ANIMATION
+			iShowBMP(0, 0, "instruct.bmp"); //ANIMATION
 			if (anim == 0)
 			{
 				iShowBMP(64 * 2.5, 64 * 1, "mmain.bmp");
@@ -95,12 +96,6 @@ void iDraw()
 			}
 		}
 
-		if (lvlsum == 0){ //NEXT LEVEL
-			
-			currentlevel++;
-			initialize();
-		}
-
 		for (i = 0; i < 576; i += 64) //BACKGROUND
 		{
 			for (j = 0; j < 576; j += 64)
@@ -135,6 +130,62 @@ void iDraw()
 		}
 
 		iShowBMP(pix*Play[currentlevel].plx, pix*Play[currentlevel].ply, "mmain.bmp");//PLAYER
+
+		if (lvlsum == 0){ //NEXT LEVEL
+			
+			if (currentlevel == lvltotal - 1)
+				{
+					iShowBMP(0, 0, "GAME.bmp");
+				}
+				else if (acount == 6)
+				{
+					acount--;
+				}
+
+				else if (acount == 5)
+				{
+					iDelay(1);
+					iShowBMP(0, 0, "NEW1.bmp");
+					acount--;
+				}
+				else if (acount == 4)
+				{
+					iDelay(1);
+					iShowBMP(0, 0, "NEW2.bmp");
+
+					acount--;
+				}
+				else if (acount == 3)
+				{
+					iDelay(1);
+					iShowBMP(0, 0, "NEW3.bmp");
+
+					acount--;
+				}
+				else if (acount == 2)
+				{
+					iDelay(1);
+					iShowBMP(0, 0, "NEW4.bmp");
+
+					acount--;
+				}
+				else if (acount == 1)
+				{
+					iDelay(1);
+					iShowBMP(0, 0, "NEW5.bmp");
+
+					acount--;
+				}
+				else if (acount == 0)
+				{
+					iDelay(1);
+					currentlevel++;
+					initialize();
+				}
+			
+			
+
+		}
 	}
 }
 
@@ -162,18 +213,34 @@ void iKeyboard(unsigned char key)
 		{
 			ins = 1;
 		}
-	}
-
-	if (key == 'r')
-	{
-		initialize();
+		else if (sound == 0)
+		{
+			PlaySound(0, 0, 0);
+			sound = 1;
+		}
+		else if (sound == 1)
+		{
+			PlaySound("Goldenrod.wav", NULL, SND_LOOP | SND_ASYNC);
+			sound = 0;
+		}
+		if (acount < 6)
+		{
+			currentlevel++;
+			initialize();
+		}
 	}
 
 	if (key == 27)
 	{
+		currentlevel = 0;
 		if (ins == 1) ins = 0;
 		initialize();
 		check = 0;
+	}
+
+	if (key == 'r'|| key=='R')
+	{
+		initialize();
 	}
 }
 
@@ -191,7 +258,7 @@ void iSpecialKeyboard(unsigned char key) //INPUTS
 		{
 			pressed++;
 			sel++;
-			if (sel > 2) sel = 1;
+			if (sel > 3) sel = 1;
 			
 		}
 		if (check == 1)
@@ -206,8 +273,8 @@ void iSpecialKeyboard(unsigned char key) //INPUTS
 		if (check == 0)
 		{ 
 			pressed++;
-			sel++;
-			if (sel > 2) sel = 1;
+			sel--;
+			if (sel < 1) sel = 3;
 		}
 		if (check == 1)
 		{
@@ -235,12 +302,14 @@ void iSpecialKeyboard(unsigned char key) //INPUTS
 int main()
 {
 	PlaySound("Goldenrod.wav", NULL, SND_LOOP | SND_ASYNC); //MUSIC
+	
 	initialize();
 	iInitialize(576, 576, "SHOVE IT"); //DRAW SCREEN
 	return 0;
 }
 
 void initialize(){
+	acount = 6;
 	for (k = 0; k < lvltotal; k++)
 	{
 		wallptr = 0;
