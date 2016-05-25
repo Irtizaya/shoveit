@@ -32,36 +32,36 @@ void iDraw()
 	if (check == 0) //MENU
 	{
 		
-		iShowBMP(0, 0, "TITLES.bmp");
+		iShowBMP(0, 0, "images/TITLES.bmp");
 
-		if (pressed && sel==2) iShowBMP(0, 0, "TITLEINS1.bmp");
-		else if (pressed && sel == 1) iShowBMP(0, 0, "TITLENG1.bmp");
-		else if (pressed && sel == 3) iShowBMP(0, 0, "TITLES2.bmp");
+		if (pressed && sel==2) iShowBMP(0, 0, "images/TITLEINS1.bmp");
+		else if (pressed && sel == 1) iShowBMP(0, 0, "images/TITLENG1.bmp");
+		else if (pressed && sel == 3) iShowBMP(0, 0, "images/TITLES2.bmp");
 		if (ins == 1)
 		{
-			iShowBMP(0, 0, "instruct.bmp"); //ANIMATION
+			iShowBMP(0, 0, "images/instruct.bmp"); //ANIMATION
 			if (anim == 0)
 			{
-				iShowBMP(64 * 2.5, 64 * 1, "mmain.bmp");
-				iShowBMP(64 * 3.5, 64 * 1, "mcrate.bmp");
-				iShowBMP(64 * 5.5, 64 * 1, "mpoint.bmp");
+				iShowBMP(64 * 2.5, 64 * 1, "images/mmain.bmp");
+				iShowBMP(64 * 3.5, 64 * 1, "images/mcrate.bmp");
+				iShowBMP(64 * 5.5, 64 * 1, "images/mpoint.bmp");
 				anim = 1;
 				iDelay(1);
 			}
 			
 			else if (anim == 1)
 			{
-				iShowBMP(64 * 3.5, 64 * 1, "mmain.bmp");
-				iShowBMP(64 * 4.5, 64 * 1, "mcrate.bmp");
-				iShowBMP(64 * 5.5, 64 * 1, "mpoint.bmp");
+				iShowBMP(64 * 3.5, 64 * 1, "images/mmain.bmp");
+				iShowBMP(64 * 4.5, 64 * 1, "images/mcrate.bmp");
+				iShowBMP(64 * 5.5, 64 * 1, "images/mpoint.bmp");
 				anim = 2;
 				iDelay(1);
 			}
 
 			else if (anim==2)
 			{
-				iShowBMP(64 * 4.5, 64 * 1, "mmain.bmp");
-				iShowBMP(64 * 5.5, 64 * 1, "mblue.bmp");
+				iShowBMP(64 * 4.5, 64 * 1, "images/mmain.bmp");
+				iShowBMP(64 * 5.5, 64 * 1, "images/mblue.bmp");
 				anim = 0;
 				iDelay(1);
 			}
@@ -100,13 +100,13 @@ void iDraw()
 		{
 			for (j = 0; j < 576; j += 64)
 			{
-				iShowBMP(i, j, "mgrass.bmp");
+				iShowBMP(i, j, "images/mgrass.bmp");
 			}
 		}
 		for (i = 0; i < 81; i++)//CHECKPOINTS
 		{
 			if (P[currentlevel][i].pox == -99) break;
-			else { iShowBMP(pix*P[currentlevel][i].pox, pix*P[currentlevel][i].poy, "mpoint.bmp"); }
+			else { iShowBMP(pix*P[currentlevel][i].pox, pix*P[currentlevel][i].poy, "images/mpoint.bmp"); }
 		}
 
 		for (i = 0; i < 81; i++)//CRATES
@@ -115,27 +115,27 @@ void iDraw()
 
 			else if (C[currentlevel][i].crstat == 0)
 			{
-				iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "mblue.bmp");
+				iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "images/mblue.bmp");
 			}
 			else if (C[currentlevel][i].crstat == 1)
 			{
-				iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "mcrate.bmp");
+				iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "images/mcrate.bmp");
 			}
 		}
 		
 		for (i = 0; i < 81; i++)//WALLS
 		{
 			if (W[currentlevel][i].wallx == -99) break;
-			else { iShowBMP(pix*W[currentlevel][i].wallx, pix*W[currentlevel][i].wally, "mwall.bmp"); }
+			else { iShowBMP(pix*W[currentlevel][i].wallx, pix*W[currentlevel][i].wally, "images/mwall.bmp"); }
 		}
 
-		iShowBMP(pix*Play[currentlevel].plx, pix*Play[currentlevel].ply, "mmain.bmp");//PLAYER
+		iShowBMP(pix*Play[currentlevel].plx, pix*Play[currentlevel].ply, "images/mmain.bmp");//PLAYER
 
 		if (lvlsum == 0){ //NEXT LEVEL
 			
 			if (currentlevel == lvltotal - 1)
 				{
-					iShowBMP(0, 0, "GAME.bmp");
+					iShowBMP(0, 0, "images/GAME.bmp");
 				}
 				else if (acount == 6)
 				{
@@ -145,34 +145,34 @@ void iDraw()
 				else if (acount == 5)
 				{
 					iDelay(1);
-					iShowBMP(0, 0, "NEW1.bmp");
+					iShowBMP(0, 0, "images/NEW1.bmp");
 					acount--;
 				}
 				else if (acount == 4)
 				{
 					iDelay(1);
-					iShowBMP(0, 0, "NEW2.bmp");
+					iShowBMP(0, 0, "images/NEW2.bmp");
 
 					acount--;
 				}
 				else if (acount == 3)
 				{
 					iDelay(1);
-					iShowBMP(0, 0, "NEW3.bmp");
+					iShowBMP(0, 0, "images/NEW3.bmp");
 
 					acount--;
 				}
 				else if (acount == 2)
 				{
 					iDelay(1);
-					iShowBMP(0, 0, "NEW4.bmp");
+					iShowBMP(0, 0, "images/NEW4.bmp");
 
 					acount--;
 				}
 				else if (acount == 1)
 				{
 					iDelay(1);
-					iShowBMP(0, 0, "NEW5.bmp");
+					iShowBMP(0, 0, "images/NEW5.bmp");
 
 					acount--;
 				}
