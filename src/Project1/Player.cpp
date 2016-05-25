@@ -27,6 +27,10 @@ void Player::move_up(int x, Wall W[][81], Crate C[][81])
 				if (W[x][j].wallx == plx && W[x][j].wally == ply + 2)
 					return;
 			}
+			for (j = 0; j < 81; j++){ //BOX BEHIND BOX
+				if (C[x][j].crx == plx && C[x][j].cry == ply + 2)
+					return;
+			}
 				C[x][i].cry += 1;
 				ply += 1;
 				return;
@@ -50,6 +54,10 @@ void Player::move_right(int x, Wall W[][81], Crate C[][81])
 		if (C[x][i].cry == ply && C[x][i].crx == plx + 1){
 			for (j = 0; j < 81; j++){ //WALL BEHIND BOX
 				if (W[x][j].wally == ply && W[x][j].wallx == plx + 2)
+					return;
+			}
+			for (j = 0; j < 81; j++){ //BOX BEHIND BOX
+				if (C[x][j].cry == ply && C[x][j].crx == plx + 2)
 					return;
 			}
 			C[x][i].crx += 1;
@@ -77,6 +85,10 @@ void Player::move_left(int x, Wall W[][81], Crate C[][81])
 				if (W[x][j].wally == ply && W[x][j].wallx == plx - 2)
 					return;
 			}
+			for (j = 0; j < 81; j++){ //BOX BEHIND BOX
+				if (C[x][j].cry == ply && C[x][j].crx == plx - 2)
+					return;
+			}
 			C[x][i].crx -= 1;
 			plx -= 1;
 			return;
@@ -100,6 +112,10 @@ void Player::move_down(int x, Wall W[][81], Crate C[][81])
 		if (C[x][i].crx == plx && C[x][i].cry == ply - 1){
 			for (j = 0; j < 81; j++){ //WALL BEHIND BOX
 				if (W[x][j].wallx == plx && W[x][j].wally == ply - 2)
+					return;
+			}
+			for (j = 0; j < 81; j++){ //BOX BEHIND BOX
+				if (C[x][j].crx == plx && C[x][j].cry == ply - 2)
 					return;
 			}
 			C[x][i].cry -= 1;

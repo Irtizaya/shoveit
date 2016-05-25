@@ -11,13 +11,13 @@
 
 using namespace std;
 
-int i, j, k, check=0, lvlsum;
+int i, j, k, lvlsum, check=0;
 int pressed=0,sel=0,ins=0,anim=0;
 char crctr;
 int wallptr, pointptr, crateptr,pix=64;
 Level lvl[5] = { 1,2,3,4,5 }; //ADD LEVELS HERE
 Wall W[5][81]; //ARRAY SIZES SHOULD BE SAME AS NUMBER OF LEVELS
-Player Play[1];
+Player Play[5];
 Point P[5][81];
 Crate C[5][81];
 
@@ -74,25 +74,31 @@ void iDraw()
 			if (C[currentlevel][i].crx == -99) break;
 			else {
 				for (j = 0; j < 81; j++)//CHECKPOINTS
-					{
+				{
 					if (P[currentlevel][j].pox == -99) break;
 					else if (P[currentlevel][j].pox == C[currentlevel][i].crx && P[currentlevel][j].poy == C[currentlevel][i].cry)
-							{
+					{
 						C[currentlevel][i].crstat = 0;
 						break;
-							}
-					else C[currentlevel][i].crstat = 1;
 					}
+					else C[currentlevel][i].crstat = 1;
 				}
 			}
+		}
 
 		lvlsum = 0;
-		
+
 		for (i = 0; i < 81; i++){ //LEVELCHECKER
 			if (C[currentlevel][i].crx == -99) break;
 			else {
 				lvlsum += C[currentlevel][i].crstat;
 			}
+		}
+
+		if (lvlsum == 0){ //NEXT LEVEL
+			
+			currentlevel++;
+			initialize();
 		}
 
 		for (i = 0; i < 576; i += 64) //BACKGROUND
@@ -102,26 +108,19 @@ void iDraw()
 				iShowBMP(i, j, "mgrass.bmp");
 			}
 		}
-
-
-		if (lvlsum == 0) { //NEXT LEVEL
-			currentlevel++;
-		}
-
-
-
 		for (i = 0; i < 81; i++)//CHECKPOINTS
 		{
 			if (P[currentlevel][i].pox == -99) break;
 			else { iShowBMP(pix*P[currentlevel][i].pox, pix*P[currentlevel][i].poy, "mpoint.bmp"); }
 		}
+
 		for (i = 0; i < 81; i++)//CRATES
 		{
 			if (C[currentlevel][i].crx == -99) break;
 
 			else if (C[currentlevel][i].crstat == 0)
-			{ 
-				iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "mblue.bmp"); 
+			{
+				iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "mblue.bmp");
 			}
 			else if (C[currentlevel][i].crstat == 1)
 			{
@@ -266,7 +265,14 @@ void initialize(){
 				else if (crctr == 'C') {
 					C[currentlevel][crateptr].crx = j;
 					C[currentlevel][crateptr].cry = 8 - i;
-					C[currentlevel][crateptr].crstat = 1;;
+					crateptr++;
+				}
+				else if (crctr == 'X') {
+					P[currentlevel][pointptr].pox = j;
+					P[currentlevel][pointptr].poy = 8 - i;
+					pointptr++;
+					C[currentlevel][crateptr].crx = j;
+					C[currentlevel][crateptr].cry = 8 - i;
 					crateptr++;
 				}
 				else if (crctr == '*') {

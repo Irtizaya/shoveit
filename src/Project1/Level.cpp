@@ -42,7 +42,7 @@ Level::Level(int id)
 		str[3] = "WWCOWWOOO";
 		str[4] = "WWOCOWOOO";
 		str[5] = "WPCOOWOOO";
-		str[6] = "WPPCPWOOO";
+		str[6] = "WPPXPWOOO";
 		str[7] = "WWWWWWOOO";
 		str[8] = "OOOOOOOOO";
 	}
