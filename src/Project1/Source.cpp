@@ -14,7 +14,7 @@ using namespace std;
 int i, j, k, check=0;
 int pressed=0,sel=0,ins=0,anim=0;
 char crctr;
-int wallptr, pointptr, crateptr;
+int wallptr, pointptr, crateptr,pix=64;
 Level lvl[1] = { 1 }; //ADD LEVELS HERE
 Wall W[1][81]; //ARRAY SIZES SHOULD BE SAME AS NUMBER OF LEVELS
 Player Play[1];
@@ -75,29 +75,26 @@ void iDraw()
 				iShowBMP(i, j, "mgrass.bmp");
 			}
 		}
-
-		/*for (i = 0; i < 9; i++)
+		for (i = 0; i < 81; i++)//CHECKPOINTS
 		{
-			for (j = 0; j < 9; j++)
-			{
-				if (W.position[i][j] == 1)
-				{
-					int posx = j * 64, posy = 64 * (8 - i);
-					iShowBMP(posx, posy, "mwall.bmp");
-				}
-			}
+			if (P[currentlevel][i].pox == -99) break;
+			else { iShowBMP(pix*P[currentlevel][i].pox, pix*P[currentlevel][i].poy, "mpoint.bmp"); }
+		}
+		for (i = 0; i < 81; i++)//CRATES
+		{
+			if (C[currentlevel][i].crx == -99) break;
+			else { iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "mcrate.bmp"); }
 		}
 
-		for (i = 0; i < 4; i++)
+		iShowBMP(pix*Play[currentlevel].plx, pix*Play[currentlevel].ply,"mmain.bmp");//PLAYER
+		
+		for (i = 0; i < 81; i++)//WALLS
 		{
-			iShowBMP(64 * P.cposx[i], 64 * P.cposy[i], "mpoint.bmp");
-		}
-		for (i = 0; i < 4; i++)
-		{
-			iShowBMP(64 * C.posx[i], 64 * C.posy[i], "mcrate.bmp");
+			if (W[currentlevel][i].wallx == -99) break;
+			else { iShowBMP(pix*W[currentlevel][i].wallx, pix*W[currentlevel][i].wally, "mwall.bmp"); }
 		}
 
-		iShowBMP(Pl.gpositionx, Pl.gpositiony, "mmain.bmp");
+		/*
 
 		for (j = 0; j < 4; j++)
 		{
@@ -141,6 +138,7 @@ void iKeyboard(unsigned char key)
 	if (key == 27)
 	{
 		if (ins == 1) ins = 0;
+		check = 0;
 	}
 }
 

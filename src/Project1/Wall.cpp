@@ -4,6 +4,8 @@
 
 Wall::Wall()
 {
+	wallx = -99;
+	wally = -99;
 }
 
 Wall::Wall(int x, int y)

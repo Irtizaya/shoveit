@@ -2,6 +2,8 @@
 
 Player::Player()
 {
+	plx = -99;
+	ply = -99;
 }
 
 Player::Player(int x, int y)

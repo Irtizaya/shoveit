@@ -2,6 +2,8 @@
 
 Point::Point()
 {
+	pox = -99;
+	poy = -99;
 }
 
 Point::Point(int x, int y)
