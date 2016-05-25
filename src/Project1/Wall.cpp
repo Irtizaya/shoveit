@@ -6,8 +6,6 @@ Wall::Wall()
 {
 }
 
-
-
 int Wall::position[9][9] = {
 
 0, 0, 1, 1, 1, 0, 0, 0, 0,

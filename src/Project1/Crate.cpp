@@ -1,6 +1,5 @@
 #include "Crate.h"
 
-
 Crate::Crate()
 {
 }

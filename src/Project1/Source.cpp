@@ -1,34 +1,26 @@
 #include "iGraphics.h"
 #include "Wall.h"
 #include "Point.h"
-#include"Crate.h"
-#include"Player.h"
+#include "Crate.h"
+#include "Player.h"
 
-#include<iostream>
-#include<cstdio>
-#include<string>
+#include <iostream>
+#include <cstdio>
+#include <string>
+
 using namespace std;
-
-
-
-
 
 Player Pl;
 Wall W;
 Point P;
 Crate C;
-//int gpositionx = 64 * 4, gpositiony = 64 * 4;
 int i, j, check=0, NGx=2,NGy=4;
 int pressed=0,sel=0,ins=0,pera,anim=0;
-//char NG[10] = "NEW GAME";
-//char INS[15] = "INSTRUCTIONS";
 
 int Cposx[4] = { 3, 3, 4, 5 };
 int Cposy[4] = { 4, 5, 3, 5 };
 void iDraw()
 {
-	
-	
 	iClear();
 	if (check == 0)
 	{
@@ -38,22 +30,18 @@ void iDraw()
 		else if (pressed && sel == 1) iShowBMP(0, 0, "TITLENG.bmp");
 		if (ins == 1)
 		{
-			
 			iShowBMP(0, 0, "instruction.bmp");
 			if (anim == 0)
 			{
 				iShowBMP(64 * 2.5, 64 * 1, "mmain.bmp");
 				iShowBMP(64 * 3.5, 64 * 1, "mcrate.bmp");
 				iShowBMP(64 * 5.5, 64 * 1, "mpoint.bmp");
-				
 				anim = 1;
 				iDelay(1);
 			}
 			
-			
 			else if (anim == 1)
 			{
-				
 				iShowBMP(64 * 3.5, 64 * 1, "mmain.bmp");
 				iShowBMP(64 * 4.5, 64 * 1, "mcrate.bmp");
 				iShowBMP(64 * 5.5, 64 * 1, "mpoint.bmp");
@@ -63,21 +51,12 @@ void iDraw()
 
 			else if (anim==2)
 			{
-
 				iShowBMP(64 * 4.5, 64 * 1, "mmain.bmp");
 				iShowBMP(64 * 5.5, 64 * 1, "mblue.bmp");
 				anim = 0;
 				iDelay(1);
 			}
-			
-			
-			
-
-			
 		}
-		
-
-		
 	}
 	
 	if (check == 1)
@@ -89,7 +68,6 @@ void iDraw()
 				iShowBMP(i, j, "mgrass.bmp");
 			}
 		}
-
 
 		for (i = 0; i < 9; i++)
 		{
@@ -122,16 +100,10 @@ void iDraw()
 				{
 					iShowBMP(C.posx[i] * 64, C.posy[i] * 64, "mblue.bmp");
 				}
-
 			}
-
 		}
 	}
-	
 }
-
-
-
 
 void iMouseMove(int mx, int my)
 {
@@ -168,15 +140,13 @@ void iKeyboard(unsigned char key)
 
 void iSpecialKeyboard(unsigned char key)
 {
-
 	if (key == GLUT_KEY_END)
 	{
 		exit(0);
 	}
+
 	if (key==GLUT_KEY_DOWN)
 	{
-		
-
 		if (check == 0)
 		{
 			pressed++;
@@ -188,12 +158,9 @@ void iSpecialKeyboard(unsigned char key)
 		{
 
 			Pl.move_down(&C);
-
 		}
-		
-		
-	
 	}
+
 	if (key == GLUT_KEY_UP)
 	{
 		
@@ -207,9 +174,8 @@ void iSpecialKeyboard(unsigned char key)
 		{
 			Pl.move_up(&C);
 		}
-		
-		
 	}
+
 	if (key == GLUT_KEY_LEFT)
 	{
 		
@@ -217,9 +183,8 @@ void iSpecialKeyboard(unsigned char key)
 		{
 			Pl.move_left(&C);
 		}
-		
-		
 	}
+
 	if (key == GLUT_KEY_RIGHT)
 	{
 		
@@ -229,19 +194,12 @@ void iSpecialKeyboard(unsigned char key)
 			Pl.move_right(&C);
 
 		}
-		
 	}
-
-	
 }
 
 int main()
 {
 	PlaySound("Goldenrod.wav", NULL, SND_LOOP | SND_ASYNC);
 	iInitialize(576, 576, "SHOVE IT");
-	
-	//iShowBMP(0, 0, "TITLE.bmp");
-	//getchar();
-	
 	return 0;
 }
