@@ -11,7 +11,7 @@
 
 using namespace std;
 
-int i, j, k, check=0;
+int i, j, k, check=0, lvlsum;
 int pressed=0,sel=0,ins=0,anim=0;
 char crctr;
 int wallptr, pointptr, crateptr,pix=64;
@@ -69,6 +69,32 @@ void iDraw()
 	
 	if (check == 1) //GAME
 	{
+		for (i = 0; i < 81; i++) //CHECKING CRATES
+		{
+			if (C[currentlevel][i].crx == -99) break;
+			else {
+				for (j = 0; j < 81; j++)//CHECKPOINTS
+					{
+					if (P[currentlevel][j].pox == -99) break;
+					else if (P[currentlevel][j].pox == C[currentlevel][i].crx && P[currentlevel][j].poy == C[currentlevel][i].cry)
+							{
+						C[currentlevel][i].crstat = 0;
+						break;
+							}
+					else C[currentlevel][i].crstat = 1;
+					}
+				}
+			}
+
+		lvlsum = 0;
+		
+		for (i = 0; i < 81; i++){ //LEVELCHECKER
+			if (C[currentlevel][i].crx == -99) break;
+			else {
+				lvlsum += C[currentlevel][i].crstat;
+			}
+		}
+
 		for (i = 0; i < 576; i += 64) //BACKGROUND
 		{
 			for (j = 0; j < 576; j += 64)
@@ -76,6 +102,14 @@ void iDraw()
 				iShowBMP(i, j, "mgrass.bmp");
 			}
 		}
+
+
+		if (lvlsum == 0) { //NEXT LEVEL
+			currentlevel++;
+		}
+
+
+
 		for (i = 0; i < 81; i++)//CHECKPOINTS
 		{
 			if (P[currentlevel][i].pox == -99) break;
@@ -84,7 +118,15 @@ void iDraw()
 		for (i = 0; i < 81; i++)//CRATES
 		{
 			if (C[currentlevel][i].crx == -99) break;
-			else { iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "mcrate.bmp"); }
+
+			else if (C[currentlevel][i].crstat == 0)
+			{ 
+				iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "mblue.bmp"); 
+			}
+			else if (C[currentlevel][i].crstat == 1)
+			{
+				iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "mcrate.bmp");
+			}
 		}
 		
 		for (i = 0; i < 81; i++)//WALLS
@@ -94,19 +136,6 @@ void iDraw()
 		}
 
 		iShowBMP(pix*Play[currentlevel].plx, pix*Play[currentlevel].ply, "mmain.bmp");//PLAYER
-
-		/*
-
-		for (j = 0; j < 4; j++)
-		{
-			for (i = 0; i < 4; i++)
-			{
-				if (C.posx[i] * 64 == P.cposx[j] * 64 && C.posy[i] * 64 == P.cposy[j] * 64)
-				{
-					iShowBMP(C.posx[i] * 64, C.posy[i] * 64, "mblue.bmp");
-				}
-			}
-		}*/
 	}
 }
 
@@ -134,6 +163,11 @@ void iKeyboard(unsigned char key)
 		{
 			ins = 1;
 		}
+	}
+
+	if (key == 'r')
+	{
+		initialize();
 	}
 
 	if (key == 27)
@@ -232,6 +266,7 @@ void initialize(){
 				else if (crctr == 'C') {
 					C[currentlevel][crateptr].crx = j;
 					C[currentlevel][crateptr].cry = 8 - i;
+					C[currentlevel][crateptr].crstat = 1;;
 					crateptr++;
 				}
 				else if (crctr == '*') {
