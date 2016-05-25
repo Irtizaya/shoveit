@@ -237,8 +237,9 @@ void iSpecialKeyboard(unsigned char key)
 
 int main()
 {
-	
+	PlaySound("Goldenrod.wav", NULL, SND_LOOP | SND_ASYNC);
 	iInitialize(576, 576, "SHOVE IT");
+	
 	//iShowBMP(0, 0, "TITLE.bmp");
 	//getchar();
 	
