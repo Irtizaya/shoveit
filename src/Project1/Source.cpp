@@ -86,14 +86,14 @@ void iDraw()
 			if (C[currentlevel][i].crx == -99) break;
 			else { iShowBMP(pix*C[currentlevel][i].crx, pix*C[currentlevel][i].cry, "mcrate.bmp"); }
 		}
-
-		iShowBMP(pix*Play[currentlevel].plx, pix*Play[currentlevel].ply,"mmain.bmp");//PLAYER
 		
 		for (i = 0; i < 81; i++)//WALLS
 		{
 			if (W[currentlevel][i].wallx == -99) break;
 			else { iShowBMP(pix*W[currentlevel][i].wallx, pix*W[currentlevel][i].wally, "mwall.bmp"); }
 		}
+
+		iShowBMP(pix*Play[currentlevel].plx, pix*Play[currentlevel].ply, "mmain.bmp");//PLAYER
 
 		/*
 
@@ -164,7 +164,7 @@ void iSpecialKeyboard(unsigned char key) //INPUTS
 		if (check == 1)
 		{
 
-			//Play[currentlevel].move_down();
+			Play[currentlevel].move_down(currentlevel, W, C);
 		}
 	}
 
@@ -178,7 +178,7 @@ void iSpecialKeyboard(unsigned char key) //INPUTS
 		}
 		if (check == 1)
 		{
-			//Play[currentlevel].move_up();
+			Play[currentlevel].move_up(currentlevel, W, C);
 		}
 	}
 
@@ -186,7 +186,7 @@ void iSpecialKeyboard(unsigned char key) //INPUTS
 	{
 		if (check == 1)
 		{
-			//Play[currentlevel].move_left();
+			Play[currentlevel].move_left(currentlevel, W, C);
 		}
 	}
 
@@ -194,7 +194,7 @@ void iSpecialKeyboard(unsigned char key) //INPUTS
 	{
 		if (check == 1)
 		{
-			//Play[currentlevel].move_right();
+			Play[currentlevel].move_right(currentlevel, W, C);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include"Crate.h"
+#include"Wall.h"
 
 class Player
 {
@@ -8,10 +9,10 @@ public:
 	Player(int x, int y);
 	int plx;
 	int ply;
-	void move_up();
-	void move_down();
-	void move_right();
-	void move_left();
+	void move_up(int x, Wall W[][81], Crate C[][81]);
+	void move_down(int x, Wall W[][81], Crate C[][81]);
+	void move_right(int x, Wall W[][81], Crate C[][81]);
+	void move_left(int x, Wall W[][81], Crate C[][81]);
 	~Player();
 };
 
