@@ -3,6 +3,7 @@
 #include "Point.h"
 #include"Crate.h"
 #include"Player.h"
+
 #include<iostream>
 #include<cstdio>
 #include<string>
@@ -18,7 +19,7 @@ Point P;
 Crate C;
 //int gpositionx = 64 * 4, gpositiony = 64 * 4;
 int i, j, check=0, NGx=2,NGy=4;
-int pressed=0,sel=0,ins=0;
+int pressed=0,sel=0,ins=0,pera,anim=0;
 //char NG[10] = "NEW GAME";
 //char INS[15] = "INSTRUCTIONS";
 
@@ -37,8 +38,42 @@ void iDraw()
 		else if (pressed && sel == 1) iShowBMP(0, 0, "TITLENG.bmp");
 		if (ins == 1)
 		{
-			iShowBMP(0, 0, "ins1.bmp");
-			iShowBMP(64 * 4, 64 * 4, "mmain.bmp");
+			
+			iShowBMP(0, 0, "instruction.bmp");
+			if (anim == 0)
+			{
+				iShowBMP(64 * 2.5, 64 * 1, "mmain.bmp");
+				iShowBMP(64 * 3.5, 64 * 1, "mcrate.bmp");
+				iShowBMP(64 * 5.5, 64 * 1, "mpoint.bmp");
+				
+				anim = 1;
+				iDelay(1);
+			}
+			
+			
+			else if (anim == 1)
+			{
+				
+				iShowBMP(64 * 3.5, 64 * 1, "mmain.bmp");
+				iShowBMP(64 * 4.5, 64 * 1, "mcrate.bmp");
+				iShowBMP(64 * 5.5, 64 * 1, "mpoint.bmp");
+				anim = 2;
+				iDelay(1);
+			}
+
+			else if (anim==2)
+			{
+
+				iShowBMP(64 * 4.5, 64 * 1, "mmain.bmp");
+				iShowBMP(64 * 5.5, 64 * 1, "mblue.bmp");
+				anim = 0;
+				iDelay(1);
+			}
+			
+			
+			
+
+			
 		}
 		
 
