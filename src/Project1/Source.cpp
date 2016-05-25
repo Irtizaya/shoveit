@@ -31,6 +31,7 @@ void iDraw()
 	iClear();
 	if (check == 0) //MENU
 	{
+		
 		iShowBMP(0, 0, "TITLE.bmp");
 
 		if (pressed && sel==2) iShowBMP(0, 0, "TITLEINS.bmp");
@@ -138,6 +139,7 @@ void iKeyboard(unsigned char key)
 	if (key == 27)
 	{
 		if (ins == 1) ins = 0;
+		initialize();
 		check = 0;
 	}
 }
