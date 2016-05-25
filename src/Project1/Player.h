@@ -5,11 +5,13 @@ class Player
 {
 public:
 	Player();
-	int gpositionx =64* 4, gpositiony = 64*4, i;
-	void move_right(Crate *C);
-	void move_left(Crate *C);
-	void move_up(Crate *C);
-	void move_down(Crate *C);
+	Player(int x, int y);
+	int plx;
+	int ply;
+	void move_up();
+	void move_down();
+	void move_right();
+	void move_left();
 	~Player();
 };
 

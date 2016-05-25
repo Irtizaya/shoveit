@@ -4,8 +4,12 @@ Crate::Crate()
 {
 }
 
-int Crate::posx[4] = { 3, 3, 4, 5 };
-int Crate::posy[4] = { 4, 5, 3, 5 };
+Crate::Crate(int x, int y)
+{
+	crx = x;
+	cry = y;
+	crstat = 1;
+}
 
 Crate::~Crate()
 {

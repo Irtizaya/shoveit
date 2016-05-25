@@ -3,8 +3,10 @@ class Crate
 {
 public:
 	Crate();
-	static int posx[4];
-	static int posy[4];
+	Crate(int x, int y);
+	int crx;
+	int cry;
+	int crstat;
 	~Crate();
 };
 

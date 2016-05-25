@@ -3,8 +3,9 @@ class Point
 {
 public:
 	Point();
-	static int cposx[4] ;
-	static int cposy[4] ;
+	Point(int x, int y);
+	int pox;
+	int poy;
 	~Point();
 };
 
