@@ -50,7 +50,7 @@ void iDraw()
                 iShowBMP(64 * 3.5, 64 * 1, "images/mcrate.bmp");
                 iShowBMP(64 * 5.5, 64 * 1, "images/mpoint.bmp");
                 anim = 1;
-                iDelay(1);
+				Sleep(500); //iDelay(1)
             }
 
             else if (anim == 1)
@@ -59,7 +59,7 @@ void iDraw()
                 iShowBMP(64 * 4.5, 64 * 1, "images/mcrate.bmp");
                 iShowBMP(64 * 5.5, 64 * 1, "images/mpoint.bmp");
                 anim = 2;
-                iDelay(1);
+				Sleep(500); //iDelay(1)
             }
 
             else if (anim==2)
@@ -67,7 +67,7 @@ void iDraw()
                 iShowBMP(64 * 4.5, 64 * 1, "images/mmain.bmp");
                 iShowBMP(64 * 5.5, 64 * 1, "images/mblue.bmp");
                 anim = 0;
-                iDelay(1);
+				Sleep(500); //iDelay(1)
             }
         }
     }
@@ -158,41 +158,41 @@ void iDraw()
 
             else if (acount == 5)
             {
-                iDelay(1);
+                Sleep(500); //iDelay(1)
                 iShowBMP(0, 0, "images/NEW1.bmp");
                 acount--;
             }
             else if (acount == 4)
             {
-                iDelay(1);
+                Sleep(500); //iDelay(1)
                 iShowBMP(0, 0, "images/NEW2.bmp");
 
                 acount--;
             }
             else if (acount == 3)
             {
-                iDelay(1);
+                Sleep(500); //iDelay(1)
                 iShowBMP(0, 0, "images/NEW3.bmp");
 
                 acount--;
             }
             else if (acount == 2)
             {
-                iDelay(1);
+                Sleep(500); //iDelay(1)
                 iShowBMP(0, 0, "images/NEW4.bmp");
 
                 acount--;
             }
             else if (acount == 1)
             {
-                iDelay(1);
+                Sleep(500); //iDelay(1)
                 iShowBMP(0, 0, "images/NEW5.bmp");
 
                 acount--;
             }
             else if (acount == 0)
             {
-                iDelay(1);
+                Sleep(500); //iDelay(1)
                 currentlevel++;
                 initialize();
             }
