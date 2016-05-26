@@ -335,7 +335,7 @@ void iSpecialKeyboard(unsigned char key) //INPUTS
 				if (ptry > 403)
 				{
 					ptry = 43;
-					lvlsel = 10;
+					lvlsel = 9;
 				}
 			}
 		}
