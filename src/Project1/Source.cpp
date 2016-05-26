@@ -219,9 +219,7 @@ void iKeyboard(unsigned char key)
     {
 		if (ins == 1)
 		{
-			ins = 0;
-			check = 0;
-			sel = 2;
+			//TO AVOID GOING TO GAME FROM INSTRUCTION PAGE
 		}
         else if (sel == 1)
         {

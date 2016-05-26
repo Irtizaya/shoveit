@@ -76,6 +76,71 @@ Level::Level(int id)
         str[8] = "OOOOOOOOO";
     }
 
+	else if (id == 6)
+	{
+		str[0] = "OOWWWWWOO";
+		str[1] = "WWWOO*WOO";
+		str[2] = "WOOCPOWWO";
+		str[3] = "WOOPCPOWO";
+		str[4] = "WWWOXCOWO";
+		str[5] = "OOWOOOWWO";
+		str[6] = "OOWOOOWWO";
+		str[7] = "OOOOOOOOO";
+		str[8] = "OOOOOOOOO";
+	}
+	
+	else if (id == 7)
+	{
+		str[0] = "OOWWWWOOO";
+		str[1] = "OOWPPWOOO";
+		str[2] = "OWWOPWWOO";
+		str[3] = "OWOOCPWOO";
+		str[4] = "WWOCOOWWO";
+		str[5] = "WOOWCCOWO";
+		str[6] = "WOO*OOOWO";
+		str[7] = "WWWWWWWWO";
+		str[8] = "OOOOOOOOO";
+	}
+
+	else if (id == 8)
+	{
+		str[0] = "WWWWWWWWO";
+		str[1] = "WOOWOOOWO";
+		str[2] = "WOCPPCOWO";
+		str[3] = "W*CPXOWWO";
+		str[4] = "WOCPPCOWO";
+		str[5] = "WOOWOOOWO";
+		str[6] = "WWWWWWWWO";
+		str[7] = "OOOOOOOOO";
+		str[8] = "OOOOOOOOO";
+	}
+
+	else if (id == 9)
+	{
+		str[0] = "WWWWWWOOO";
+		str[1] = "WOOOOWOOO";
+		str[2] = "WOCCCWWOO";
+		str[3] = "WOOWPPWWW";
+		str[4] = "WWOOPPCOW";
+		str[5] = "OWO*OOOOW";
+		str[6] = "OWWWWWWWW";
+		str[7] = "OOOOOOOOO";
+		str[8] = "OOOOOOOOO";
+	}
+
+	else if (id == 10)
+	{
+		str[0] = "WWWWWWWOO";
+		str[1] = "WPPCPPWOO";
+		str[2] = "WPPWPPWOO";
+		str[3] = "WOCCCOWOO";
+		str[4] = "WOOCOOWOO";
+		str[5] = "WOCCCOWOO";
+		str[6] = "WOOO*OWOO";
+		str[7] = "WWWWWWWOO";
+		str[8] = "OOOOOOOOO";
+	}
+
     /* COPY THIS TO ADD NEW LEVELS
     	else if (id == x)
     {
