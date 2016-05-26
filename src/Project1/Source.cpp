@@ -31,6 +31,8 @@ void initialize();
 void iDraw()
 {
     iClear();
+	glutReshapeWindow(576, 576);
+	;
     if (check == 0) //MENU
     {
 
