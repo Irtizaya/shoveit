@@ -217,7 +217,13 @@ void iKeyboard(unsigned char key)
 {
     if (key == '\r')
     {
-        if (sel == 1)
+		if (ins == 1)
+		{
+			ins = 0;
+			check = 0;
+			sel = 2;
+		}
+        else if (sel == 1)
         {
             check = 1;
         }
@@ -225,12 +231,12 @@ void iKeyboard(unsigned char key)
         {
             ins = 1;
         }
-        else if (sound == 0)
+        else if (sel == 3 && sound == 0)
         {
             PlaySound(0, 0, 0);
             sound = 1;
         }
-        else if (sound == 1)
+		else if (sel == 3 && sound == 1)
         {
             PlaySound("Goldenrod.wav", NULL, SND_LOOP | SND_ASYNC);
             sound = 0;
