@@ -31,6 +31,7 @@ void initialize();
 void iDraw()
 {
     iClear();
+
 	glutReshapeWindow(576, 576);
 	;
     if (check == 0) //MENU
@@ -315,7 +316,7 @@ int main()
     PlaySound("Goldenrod.wav", NULL, SND_LOOP | SND_ASYNC); //MUSIC
 
     initialize();
-    iInitialize(576, 576, "SHOVE IT"); //DRAW SCREEN
+    iInitialize(576, 576, "Shove It!"); //DRAW SCREEN
     return 0;
 }
 
